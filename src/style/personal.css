@@ -1,0 +1,30 @@
+
+input {
+    display: block;
+}
+
+#psnl h1,
+#psnl h2,
+#psnl h3 {
+    margin: 0;
+}
+
+#psnl {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+/* #psnl-e-name,
+#psnl-e-email {
+    grid-column: 1 / 2;
+}
+
+#psnl-e-title,
+#psnl-e-phone {
+    grid-column: 2 / 3;
+} */
+
+#psnl-s-name,
+#psnl-s-title {
+    grid-column: 1 / 3;
+}
