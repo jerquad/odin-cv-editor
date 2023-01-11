@@ -1,0 +1,54 @@
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+label {
+    font-size: .75rem;
+    font-weight: bold;
+}
+
+#content {
+    display: flex;
+    justify-content: center;
+}
+
+.section {
+    width: 75%;
+    position: relative;
+    padding: 1rem;
+    border: 1px solid black;
+}
+
+input[type='submit'],
+button {
+    color: white;
+    background-color: black;
+    border: 1px solid black;
+    margin: .25rem;
+}
+
+input[type='submit']:hover,
+button:hover {
+    color: black;
+    background-color: white;
+}
+
+input {
+    display: block;
+}
+
+.toggle-edit {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+
+.hide {
+    visibility: hidden;
+}
+
+.edit-confirm {
+    grid-column: -2 / -1;
+    display: flex;
+    justify-content: end;
+}

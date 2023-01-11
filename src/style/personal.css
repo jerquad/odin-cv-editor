@@ -1,30 +1,20 @@
-
-input {
-    display: block;
-}
-
 #psnl h1,
 #psnl h2,
 #psnl h3 {
     margin: 0;
 }
 
-#psnl {
+#psnl,
+#psnl form {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    gap: 1rem;
 }
-
-/* #psnl-e-name,
-#psnl-e-email {
-    grid-column: 1 / 2;
-}
-
-#psnl-e-title,
-#psnl-e-phone {
-    grid-column: 2 / 3;
-} */
 
 #psnl-s-name,
-#psnl-s-title {
+#psnl-s-title,
+#psnl form :nth-child(1),
+#psnl form :nth-child(2) {
     grid-column: 1 / 3;
 }
+

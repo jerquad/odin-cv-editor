@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Personal from './components/Personal'
+import './style/app.css'
 
 class App extends Component {
   constructor(props) {
@@ -9,32 +10,36 @@ class App extends Component {
       editPersonal: false,
       personal: {
         name: 'John Dough',
-        title: 'Goblin',
+        title: 'Computer Goblin',
         email: 'email@me.gov',
         phone: '867-5309'
       },
     }
 
-    this.togglePersonal = this.togglePersonal.bind(this);
-    this.handleSubmitPersonal = this.handleSubmitPersonal.bind(this);
+    this.handleSubmitEdit = this.handleSubmitEdit.bind(this);
+    this.toggleEdit = this.toggleEdit.bind(this);
   }
 
-  togglePersonal() {
-    this.setState(prevState => ({
-      editPersonal: !prevState.editPersonal
-    }));
-  }
-
-  handleSubmitPersonal(e, newData) {
+  handleSubmitEdit(e, target, newData) {
     e.preventDefault();
-    this.setState({personal: newData})
-    this.togglePersonal();
+    this.setState({[target]: newData});
+  }
+
+  toggleEdit(target) {
+    this.setState(prevState => ({
+      [target]: !prevState[target]
+    }))
   }
 
   render() {
     return (
-      <div>
-        <Personal isEdit={this.state.editPersonal} data={this.state.personal} toggle={this.togglePersonal} submit={this.handleSubmitPersonal} />
+      <div id='content'>
+        <Personal 
+          isEdit={this.state.editPersonal} 
+          data={this.state.personal} 
+          toggle={this.toggleEdit} 
+          submit={this.handleSubmitEdit}
+        />
       </div>
     )
   }

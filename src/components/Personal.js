@@ -6,48 +6,43 @@ class Personal extends Component {
     constructor(props) {
         super(props)
 
-        this.state = {
-            name: this.props.data.name,
-            title: this.props.data.title,
-            email: this.props.data.email,
-            phone: this.props.data.phone
-        }
+        this.state = this.props.data;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
+        this.handleHover = this.handleHover.bind(this);
     }
 
     handleChange(e) {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
+        this.setState({[e.target.name]: e.target.value});
     }
 
     handleCancel() {
-        this.setState({
-            name: this.props.data.name,
-            title: this.props.data.title,
-            email: this.props.data.email,
-            phone: this.props.data.phone       
-        })
-        this.props.toggle();
+        for (const [key, value] of Object.entries(this.props.data)) {
+            this.setState({[key]: value})
+        }
+        this.props.toggle('editPersonal');
+    }
+
+    handleHover() {
+        document.querySelector('#psnl .toggle-edit').classList.toggle('hide');
     }
 
     createStatic() {
         return (
-            <div id='psnl'>
+            <div id='psnl' className='section' onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
                 <h1 id='psnl-s-name'>{this.props.data.name}</h1>
                 <h2 id='psnl-s-title'>{this.props.data.title}</h2>
                 <h3 id='psnl-s-email'>{this.props.data.email}</h3>
                 <h3 id='psnl-s-phone'>{this.props.data.phone}</h3>
-                <button onClick={this.props.toggle}>Edit</button>
+                <button className='toggle-edit hide' onClick={(e) => this.props.toggle('editPersonal')}>Edit</button>
             </div>
         )
     }
 
     createEdit() {
         return (
-            <div id='psnl'>
+            <div id='psnl' className='section'>
                 <form id='psnl-e-form'>
                     <label>
                         NAME
@@ -65,8 +60,12 @@ class Personal extends Component {
                         PHONE
                         <input id='psnl-e-phone' name='phone' type='text' value={this.state.phone} onChange={this.handleChange} />
                     </label>
-                    <input id='psnl-e-submit' type='submit' value='SAVE' onClick={(e) => this.props.submit(e, this.state)} />
-                    <button id='psnl-e-cancel' onClick={this.handleCancel}>CANCEL</button>
+                    <div className='edit-confirm'>
+                        <input id='psnl-e-submit' type='submit' value='SAVE' onClick={(e) => {
+                            this.props.submit(e, 'personal', this.state);
+                            this.props.toggle('editPersonal')}} />
+                        <button id='psnl-e-cancel' onClick={this.handleCancel}>CANCEL</button>
+                    </div>
                 </form>
             </div>
         )
