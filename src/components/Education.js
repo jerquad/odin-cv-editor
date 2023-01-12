@@ -5,11 +5,6 @@ class Education extends Component {
     constructor(props) {
         super (props);
 
-        // const toState = {};
-        // this.props.data.forEach(item => {
-        //     toState[item.key] = item
-        // })
-
         this.state = this.propsToState();
 
         this.handleChange = this.handleChange.bind(this);
@@ -30,23 +25,29 @@ class Education extends Component {
     }
 
     handleCancel() {
-        // console.log(this.state)
         for (const [key, value] of Object.entries(this.propsToState())) {
-            // console.log(value);
             this.setState({[key]: value});
         }
-        console.log(this.props.data);
         this.props.toggle('editEducation');
     }
 
     handleChange(e, key) {
         const newState = this.state[key];
         newState[e.target.name] = e.target.value;
-        this.setState({key: newState})
+        this.setState({[key]: newState})
     }
 
     handleHover() {
         document.querySelector('#edu .toggle-edit').classList.toggle('hide');
+    }
+
+    
+    prepareSubmitEdit() {
+        const toSubmit = [];
+        for (const [key, value] of Object.entries(this.state)) {
+            toSubmit.push(value);
+        }
+        return toSubmit;
     }
 
     createStatic() {
@@ -67,8 +68,11 @@ class Education extends Component {
     }
 
     createEdit() {
-        const data = this.props.data;
-        console.log(data)
+        const data = [];
+        for (const [key, value] of Object.entries(this.state)) {
+            data.push(value);
+        }
+
         const listItems = data.map((value) => 
             <li key={value.key}>
                 <label>
@@ -77,11 +81,11 @@ class Education extends Component {
                 </label>
                 <label>
                     COURSE OF STUDY
-                    <input id={`${value.key}-inst`} name='study' type='text' value={value.study} onChange={(e) => this.handleChange(e, value.key)} />
+                    <input id={`${value.key}-study`} name='study' type='text' value={value.study} onChange={(e) => this.handleChange(e, value.key)} />
                 </label>
                 <label>
                     YEAR(S) ATTENDED
-                    <input id={`${value.key}-inst`} name='year' type='text' value={value.year} onChange={(e) => this.handleChange(e, value.key)} />
+                    <input id={`${value.key}-year`} name='year' type='text' value={value.year} onChange={(e) => this.handleChange(e, value.key)} />
                 </label>
             </li>
         );
@@ -91,8 +95,8 @@ class Education extends Component {
                 <form id='edu-e-form'>
                     <ul>{listItems}</ul>
                     <div className='edit-confirm'>
-                    <input id='edu-e-submit' type='submit' value='SAVE' onClick={(e) => {
-                            this.props.submit(e, 'education', this.state);
+                        <input id='edu-e-submit' type='submit' value='SAVE' onClick={(e) => {
+                            this.props.submit(e, 'education', this.prepareSubmitEdit());
                             this.props.toggle('editEducation')}} />
                         <button id='edu-e-cancel' onClick={this.handleCancel}>CANCEL</button>
                     </div>
