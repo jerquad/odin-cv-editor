@@ -9,7 +9,29 @@ label {
 
 #content {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem
+}
+
+h1, h2, h3, h4, h5, h6 {
+    margin: 0;
+}
+
+ul {
+    list-style: none;
+}
+
+#edu-e-form li {
+    padding: .5rem;
+}
+
+#edu-e-form li:not(:last-child) {
+    border-bottom: 1px solid black;
+}
+
+li h5{
+    margin-left: 1rem;
 }
 
 .section {
