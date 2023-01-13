@@ -30,6 +30,32 @@ ul {
     border-bottom: 1px solid black;
 }
 
+.add-icon-box {
+    display: flex;
+    justify-content: center;
+}
+
+.add-icon {
+    height: 42px;
+    width: 42px;
+}
+
+/* .del-icon-box {
+    border: 1px solid black;
+    width: 100%;
+} */
+
+.del-icon {
+    height: 21px;
+    width: 21px;
+}
+
+.deletable-li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
 li h5{
     margin-left: 1rem;
 }
