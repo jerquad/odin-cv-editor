@@ -4,13 +4,9 @@ import EducationEdit from './EducationEdit';
 
 class Education extends Component {
     constructor(props) {
-        super (props);
-        this.handleHover = this.handleHover.bind(this);
+        super(props);
+        this.handleHover = this.props.hover.bind(this);
     }    
-
-    handleHover(target) {
-        document.querySelector(target).classList.toggle('hide');
-    }
 
     render() {
         let edu;

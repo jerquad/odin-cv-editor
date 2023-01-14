@@ -14,10 +14,18 @@ class EducationDisplay extends Component {
             </li>
         );
         return(
-            <div id='edu' className='section' onMouseEnter={() => this.props.hover('#edu .toggle-edit')} onMouseLeave={() =>this.props.hover('#edu .toggle-edit')}>
+            <div 
+             id='edu' 
+             className='section' 
+             onMouseEnter={() => this.props.hover('#edu .toggle-edit')} 
+             onMouseLeave={() =>this.props.hover('#edu .toggle-edit')}>
                 <h3>EDUCATION</h3>
                 <ul>{listItems}</ul>
-                <button className='toggle-edit hide' onClick={(e) => this.props.toggle('editEducation')}>Edit</button>
+                <button 
+                 className='toggle-edit hide'
+                 onClick={(e) => this.props.toggle('editEducation')}>
+                    EDIT
+                </button>
             </div>
         )
     }   
