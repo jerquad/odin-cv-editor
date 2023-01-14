@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import EducationDisplay from './EducationDisplay';
 import EducationEdit from './EducationEdit';
-import uniqid from 'uniqid'
 
 class Education extends Component {
     constructor(props) {

@@ -9,8 +9,8 @@ class EducationEdit extends Component {
 
         this.handleChange = this.handleChange.bind(this);
         this.handleCancel = this.handleCancel.bind(this);
-        this.addNewItem = this.addNewItem.bind(this);
         this.handleRemove = this.handleRemove.bind(this);
+        this.addNewItem = this.addNewItem.bind(this);
     }
 
     handleRemove(key) {
