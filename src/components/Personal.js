@@ -31,11 +31,15 @@ class Personal extends Component {
     createStatic() {
         return (
             <div id='psnl' className='section' onMouseEnter={this.handleHover} onMouseLeave={this.handleHover}>
-                <h1 id='psnl-s-name'>{this.props.data.name}</h1>
-                <h2 id='psnl-s-title'>{this.props.data.title}</h2>
-                <h3 id='psnl-s-email'>{this.props.data.email}</h3>
-                <h3 id='psnl-s-phone'>{this.props.data.phone}</h3>
-                <button className='toggle-edit hide' onClick={(e) => this.props.toggle('editPersonal')}>Edit</button>
+                <div id='psnl-display'>
+                    <h1 id='psnl-s-name'>{this.props.data.name}</h1>
+                    <h2 id='psnl-s-title'>{this.props.data.title}</h2>
+                    <div>
+                        <h3 id='psnl-s-email'>{this.props.data.email}</h3>
+                        <h3 id='psnl-s-phone'>{this.props.data.phone}</h3>
+                    </div>
+                    <button className='toggle-edit hide' onClick={(e) => this.props.toggle('editPersonal')}>Edit</button>
+                </div>
             </div>
         )
     }

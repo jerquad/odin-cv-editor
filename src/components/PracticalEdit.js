@@ -55,6 +55,7 @@ class PracticalEdit extends Component {
                          id={`${value.key}-desc`}
                          name='desc'
                          value={value.desc}
+                         rows='5'
                          onChange={(e) => this.props.change(e, value.key)}
                         />
                     </label>
@@ -73,13 +74,13 @@ class PracticalEdit extends Component {
         return (
             <div id='prac' className='section'>
                 <h3>PRACTICAL EXPERIENCE</h3>
-                <form id='prac-e-form'>
+                <form id='prac-e-form' className='edit-area'>
                     <ul>{listItems}</ul>
                     <div className='add-icon-box'>
                     <svg className='add-icon' 
                          xmlns="http://www.w3.org/2000/svg" 
                          viewBox="0 0 24 24" 
-                         onClick={() => this.props.add({inst: '', study: '', year: ''})}>
+                         onClick={() => this.props.add({org: '', role: '', year: '', desc: ''})}>
                             <path fill="currentColor" d="M17,13H13V17H11V13H7V11H11V7H13V11H17M12,2A10,10 0 0,0 2,12A10,10 0 0,0 12,22A10,10 0 0,0 22,12A10,10 0 0,0 12,2Z" />
                         </svg>
                     </div>

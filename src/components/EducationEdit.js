@@ -58,7 +58,7 @@ class EducationEdit extends Component {
         return (
             <div id='edu' className='section'>
                 <h3>EDUCATION</h3>
-                <form id='edu-e-form'>
+                <form id='edu-e-form' className="edit-area">
                     <ul>{listItems}</ul>
                     <div className='add-icon-box'>
                         <svg className='add-icon' 

@@ -3,13 +3,16 @@ import uniqid from 'uniqid';
 import Personal from './components/Personal';
 import Education from './components/Education';
 import Practical from './components/Practical';
+import ProfilePic from './components/ProfilePic';
 import './style/app.css';
+import proPic from './img/kamen.PNG';
 
 class App extends Component {
   constructor(props) {
     super(props);
 
     this.state = {
+      profilePic: proPic,
       editPersonal: false,
       personal: {
         name: 'John Dough',
@@ -53,6 +56,7 @@ class App extends Component {
 
     this.handleSubmitEdit = this.handleSubmitEdit.bind(this);
     this.toggleEdit = this.toggleEdit.bind(this);
+    this.handlePicChange = this.handlePicChange.bind(this);
   }
 
   handleSubmitEdit(e, target, newData) {
@@ -70,15 +74,28 @@ class App extends Component {
     document.querySelector(target).classList.toggle('hide');
   }
 
+  handlePicChange(e) {
+    this.setState({
+      profilePic: URL.createObjectURL(e.target.files[0])
+    })
+  }
+
   render() {
     return (
       <div id='content'>
-        <Personal 
-          isEdit={this.state.editPersonal} 
-          data={this.state.personal} 
-          toggle={this.toggleEdit} 
-          submit={this.handleSubmitEdit}
-        />
+        <div id='resume-head'>
+          <Personal
+            isEdit={this.state.editPersonal}
+            data={this.state.personal}
+            toggle={this.toggleEdit}
+            submit={this.handleSubmitEdit}
+          />
+          <ProfilePic
+           pic={this.state.profilePic}
+           hover={this.handleHover}
+           change={this.handlePicChange}
+          />
+        </div>
         <Education
           isEdit={this.state.editEducation}
           data={this.state.education}

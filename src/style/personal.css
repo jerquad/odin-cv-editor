@@ -1,20 +1,39 @@
-/* #psnl h1,
-#psnl h2,
-#psnl h3 {
-    margin: 0;
-} */
-
-#psnl,
+#psnl-display,
 #psnl form {
     display: grid;
     grid-template-columns: 1fr 1fr;
+}
+
+#psnl form {
+    gap: .25rem;
+}
+
+#psnl-display h3,
+#psnl-display h2{
+    font-style: italic;
+}
+
+#psnl-display div {
+    display: flex;
     gap: 1rem;
 }
 
+#psnl-display :nth-child(2),
+#psnl-display :nth-child(3) {
+    margin-left: 1rem;
+}
+
+#psnl form {
+    width: 100%;
+}
+
+#psnl form label {
+    display: flex;
+    flex-direction: column;
+}
+
 #psnl-s-name,
-#psnl-s-title,
-#psnl form :nth-child(1),
-#psnl form :nth-child(2) {
+#psnl-s-title {
     grid-column: 1 / 3;
 }
 
